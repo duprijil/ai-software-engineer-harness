@@ -1,0 +1,8 @@
+{
+  "name": "python",
+  "version": "0.1.0",
+  "description": "DDD and Clean Architecture Python: project structure, naming, DI, config, infra, Makefile, CI, git flow and AI-driven docs",
+  "author": {
+    "name": "duprijil"
+  }
+}

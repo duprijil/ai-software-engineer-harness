@@ -1,0 +1,27 @@
+name: ${PROJECT_NAME}_${ENV_NAME}
+
+services:
+  postgres:
+    image: postgres:${POSTGRES_VERSION}
+    container_name: ${PROJECT_NAME}_${ENV_NAME}_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGPORT: ${POSTGRES_CONTAINER_PORT}
+    ports:
+      - "${POSTGRES_HOST_PORT}:${POSTGRES_CONTAINER_PORT}"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d
+    networks:
+      - project_network
+
+volumes:
+  postgres_data:
+    name: ${PROJECT_NAME}_${ENV_NAME}_postgres_data
+
+networks:
+  project_network:
+    name: ${PROJECT_NAME}_${ENV_NAME}_network
+    driver: bridge

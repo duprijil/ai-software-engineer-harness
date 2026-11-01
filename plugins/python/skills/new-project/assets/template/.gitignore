@@ -1,0 +1,14 @@
+.env.secrets
+.venv/
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.ruff_cache/
+.import_linter_cache/
+.scannerwork/
+build/
+dist/
+*.egg-info/
+data/
+.idea/
+.vscode/

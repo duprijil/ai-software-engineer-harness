@@ -1,0 +1,32 @@
+[importlinter]
+root_package = {{project_name}}
+include_external_packages = True
+
+[importlinter:contract:layers]
+name = Layers point inward
+type = layers
+containers =
+    {{project_name}}.core
+layers =
+    (entrypoints)
+    (use_cases)
+    (adapters)
+    models
+
+[importlinter:contract:config-access]
+name = Only entrypoints read config and secrets
+type = forbidden
+source_modules =
+    {{project_name}}.core.models
+    {{project_name}}.core.adapters
+forbidden_modules =
+    {{project_name}}.config
+
+[importlinter:contract:di-stays-in-entrypoints]
+name = Only entrypoints use the DI library
+type = forbidden
+source_modules =
+    {{project_name}}.core.models
+    {{project_name}}.core.adapters
+forbidden_modules =
+    dependency_injector
